@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 2</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Додаткове завдання 2</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      // Створити об’єкт «Авто». 
+
+      // -------Поля(властивості)-------
+      // Марка
+      // Розмір бака
+      // Кількість наявних літрів
+      // Кількість місць
+      // Кількість пасажирів
+      // -------Методи (дії)-------
+      // Заправка на вказану кількість літрів
+      // Виведення кількості пасажирів
+      // Додавання пасажирів
+      // Висадка пасажирів
+
+      // function Car(brand, tankSize, availableLiters, seats, passengers) {
+      //    this.brand = brand
+      //    this.tankSize = tankSize
+      //    this.availableLiters = availableLiters
+      //    this.seats = seats
+      //    this.passengers = passengers
+      // }
+
+      // Car.prototype.fillCar = function (petrolLiters) {
+      //    if (this.tankSize >= petrolLiters + this.availableLiters)
+      //       this.availableLiters += petrolLiters
+      //    else
+      //       document.write(`<div class="text">Неможливо заправити машину на ${petrolLiters} літрів. Кількість наявних літрів ${this.availableLiters} з ${this.tankSize}</div>`)
+      // }
+
+      // Car.prototype.showPassengers = function () {
+      //    document.write(`<div class="text">Кількість пасажирів: ${this.passengers}</div>`)
+      // }
+
+      // Car.prototype.addPassengers = function (passengersNumber) {
+      //    if (this.seats >= this.passengers + passengersNumber)
+      //       this.passengers += passengersNumber
+      //    else
+      //       document.write(`<div class="text">Неможливо додати ${passengersNumber} пасажирів. Кількість місць ${this.seats} та пасажирів ${this.passengers}</div>`)
+      // }
+
+      // Car.prototype.disembarkationPassengers = function (passengersNumber) {
+      //    if (this.passengers >= passengersNumber)
+      //       this.passengers -= passengersNumber
+      //    else
+      //       document.write(`<div class="text">Ви не можете висадити ${passengersNumber} пасажирів, бо в машині усього ${this.passengers} пасажирів</div>`)
+      // }
+
+      class Car {
+         constructor(brand, tankSize, availableLiters, seats, passengers) {
+            this.brand = brand
+            this.tankSize = tankSize
+            this.availableLiters = availableLiters
+            this.seats = seats
+            this.passengers = passengers
+         }
+
+         fillCar(petrolLiters) {
+            if (this.tankSize >= petrolLiters + this.availableLiters)
+               this.availableLiters += petrolLiters
+            else
+               document.write(`<div class="text">Неможливо заправити машину на ${petrolLiters} літрів. Кількість наявних літрів ${this.availableLiters} з ${this.tankSize}</div>`)
+         }
+
+         showPassengers() {
+            document.write(`<div class="text">Кількість пасажирів: ${this.passengers}</div>`)
+         }
+
+         addPassengers(passengersNumber) {
+            if (this.seats >= this.passengers + passengersNumber)
+               this.passengers += passengersNumber
+            else
+               document.write(`<div class="text">Неможливо додати ${passengersNumber} пасажирів. Кількість місць ${this.seats} та пасажирів ${this.passengers}</div>`)
+         }
+
+         disembarkationPassengers(passengersNumber) {
+            if (this.passengers >= passengersNumber)
+               this.passengers -= passengersNumber
+            else
+               document.write(`<div class="text">Ви не можете висадити ${passengersNumber} пасажирів, бо в машині усього ${this.passengers} пасажирів</div>`)
+         }
+      }
+
+      const carBMW = new Car('BMW', 50, 20, 4, 1)
+
+      document.write(`<div class="text">Кількість наявних літрів:${carBMW.availableLiters}</div>`)
+      carBMW.fillCar(25)
+      document.write(`<div class="text">Кількість наявних літрів:${carBMW.availableLiters}</div>`)
+
+      carBMW.showPassengers()
+
+      carBMW.addPassengers(2)
+      carBMW.showPassengers()
+
+      carBMW.disembarkationPassengers(1)
+      carBMW.showPassengers()
+   </script>
+</body>
+
+</html>

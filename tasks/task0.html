@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 0</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Обов'язкове завдання 0</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      // Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, 
+      // а у іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+      // Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+
+      let obj1 = {
+         numbers: [32, 5, 20, 31, 6, 70],
+         getSum: function () {
+            return this.numbers.reduce((prevSum, currentNum) => prevSum + currentNum)
+         },
+         toString: function () {
+            return `${this.numbers} `
+         },
+      }
+
+      let obj2 = {
+         numbers: [6, 20, 11, 15, 3, 9, 10],
+         getProduct: function (minNumber, maxNumber) {
+            return this.numbers.reduce((prevProduct, num) => (num >= minNumber && num <= maxNumber) ? prevProduct * num : prevProduct, 1)
+         },
+         toString: function () {
+            return `${this.numbers} `
+         },
+      }
+
+      const obj1MinNum = 20,
+         obj1MaxNum = 40,
+         obj2MinNum = 6,
+         obj2MaxNum = 17
+
+      const obj1NumbersSum = obj1.getSum()
+      const obj2NumbersSum = obj1.getSum.apply(obj2)
+
+      const obj2NumbersMult = obj2.getProduct(obj2MinNum, obj2MaxNum)
+      const obj1NumbersMult = obj2.getProduct.call(obj1, obj1MinNum, obj1MaxNum)
+
+      document.write(`
+         <div class="text">Сума елементів першого об'єкту (${obj1}): ${obj1NumbersSum}</div>
+         <div class="text">Сума елементів другого об'єкту (${obj2}): ${obj2NumbersSum}</div>
+         <div class="text">Добуток елементів першого об'єкту (${obj1}) у проміжку ${obj1MinNum} - ${obj1MaxNum}: ${obj1NumbersMult}</div>
+         <div class="text">Добуток елементів першого об'єкту (${obj2}) у проміжку ${obj2MinNum} - ${obj2MaxNum}: ${obj2NumbersMult}</div>
+      `)
+   </script>
+</body>
+
+</html>

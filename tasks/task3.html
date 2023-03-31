@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ukr">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/style.css">
+   <title>Завдання 3</title>
+</head>
+
+<body>
+   <main class="page">
+      <section class="block">
+         <div class="block__container">
+            <h1 class="block__title">Додаткове завдання 3</h1>
+            <div class="block__body">
+               <a href="../index.html" class="block__link">Повернутися до index.html</a>
+            </div>
+         </div>
+      </section>
+   </main>
+   <script>
+      // Розробити клас MultChecker для перевірки таблиці множення
+
+      // -------Поля(властивості)-------
+      // Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+      // Кількість правильних відповідей
+      // Кількість неправильних відповідей
+      // -------Методи (дії)-------
+      // Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+      // Перевірка правильності вказаної відповіді
+      // render - виведення інформації про тестування на екран
+
+      class MultChecker {
+         constructor(checkedNum) {
+            this.checkedNum = checkedNum
+            this.correctAnswers = 0
+            this.wrongAnswers = 0
+         }
+
+         generateExample() {
+            const secondNum = 1 + Math.floor(Math.random() * 12)
+            const mult = this.checkedNum * secondNum
+            return { secondNum, mult }
+         }
+
+         checkMult() {
+            const example = this.generateExample()
+            const userAnswer = parseInt(prompt(`${this.checkedNum} * ${example.secondNum} =`))
+            if (userAnswer === example.mult) {
+               this.correctAnswers++
+               alert('Правильно')
+            } else {
+               this.wrongAnswers++
+               alert(`Неправильно. Правильна відповідь ${example.mult}`)
+            }
+         }
+
+         render() {
+            document.write(`
+            <div class="text">Кількість правильних відповідей ${this.correctAnswers}</div>
+            <div class="text">Кількість неправильних відповідей ${this.wrongAnswers}</div>
+         `)
+         }
+      }
+
+      // function MultChecker(checkedNum) {
+      //    this.checkedNum = checkedNum
+      //    this.correctAnswers = 0
+      //    this.wrongAnswers = 0
+      // }
+
+      // MultChecker.prototype.generateExample = function () {
+      //    const secondNum = 1 + Math.floor(Math.random() * 12)
+      //    const mult = this.checkedNum * secondNum
+      //    return { secondNum, mult }
+      // }
+
+      // MultChecker.prototype.checkMult = function () {
+      //    const example = this.generateExample()
+      //    const userAnswer = parseInt(prompt(`${this.checkedNum} * ${example.secondNum} =`))
+      //    if (userAnswer === example.mult) {
+      //       this.correctAnswers++
+      //       alert('Правильно')
+      //    } else {
+      //       this.wrongAnswers++
+      //       alert(`Неправильно. Правильна відповідь ${example.mult}`)
+      //    }
+      // }
+
+      // MultChecker.prototype.render = function () {
+      //    document.write(`
+      //       <div class="text">Кількість правильних відповідей ${this.correctAnswers}</div>
+      //       <div class="text">Кількість неправильних відповідей ${this.wrongAnswers}</div>
+      //    `)
+      // }
+
+      const prod = new MultChecker(3)
+
+      for (let i = 0; i < 10; i++) {
+         prod.checkMult()
+      }
+
+      prod.render()
+   </script>
+</body>
+
+</html>
